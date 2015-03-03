@@ -6,7 +6,7 @@
 /*   By: xacoquan <xacoquan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/21 17:38:34 by xacoquan          #+#    #+#             */
-/*   Updated: 2015/03/03 18:00:01 by xacoquan         ###   ########.fr       */
+/*   Updated: 2015/03/03 20:07:55 by xacoquan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,15 @@ int		pop_element(t_lst **l_a)
 	 printf("%d\n", ret);
 	return (ret);
 }
-void                ft_testav(int ac, char **av)
-{
-    char            **ptr;
 
-    ptr = av;
-    dprintf(1, "ac = %i, av : ", ac);
+void	ft_testav(int ac, char **av)
+{
+	char	**ptr;
+
+	ptr = av;
+	dprintf(1, "ac = [%i], av : ", ac);
     while (*ptr)
-        dprintf(1, "\"%s\" ", *ptr++);
+    	dprintf(1, "[\"%s]\" ", *ptr++);
     write(1, "\n", 1);
 }
 	
@@ -124,12 +125,12 @@ int		main(int ac, char **av)
 	l_a = NULL;
 	if (ac <= 1)
 		return (write(1,"error\n", 6));
-//	len = 0;
+	len = 0;
 	l_a = NULL;
 //	v = 0;
 	if (ac <= 4)
 		return (ft_cases(ac - 1, av, flags));
-	while (*av)
+	while (*av && ++len)
 		if (!(ft_pushlst(*av++, &l_a, flags)))
 			return (write(1, "Error\n", 6));
 //		ft_testav(ac, av);
